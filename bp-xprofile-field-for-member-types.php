@@ -324,24 +324,25 @@ final class BP_XProfile_Field_For_Member_Types {
 		<div id="for_member_types" class="postbox">
 			<h3><?php _e( 'Member Types', 'bp-xprofile-field-for-member-types' ); ?></h3>
 			<div class="inside">
-				<p class="description"><?php _e( 'To make this field exclusively available to users, select theirs from the following member types.', 'bp-xprofile-field-for-member-types' ); ?></p>
+				<p class="description"><?php _e( 'This field should be available to:', 'bp-xprofile-field-for-member-types' ); ?></p>
 
 				<ul>
-					<li>
-						<label>
-							<input name="member-types[]" type="checkbox" value="none" <?php checked( in_array( 'none', $obj_member_types ) ); ?>/>
-							<em><?php _e( 'No member type', 'bp-xprofile-field-for-member-types' ); ?></em>
-						</label>
-					</li>
-
 					<?php foreach ( $member_types as $member_type ) : ?>
 					<li>
 						<label>
 							<input name="member-types[]" type="checkbox" value="<?php echo $member_type->name; ?>" <?php checked( in_array( $member_type->name, $obj_member_types ) ); ?>/>
-							<?php echo $member_type->labels['singular_name']; ?>
+							<?php echo $member_type->labels['name']; ?>
 						</label>
 					</li>
 					<?php endforeach; ?>
+
+					<li>
+						<label>
+							<input name="member-types[]" type="checkbox" value="none" <?php checked( in_array( 'none', $obj_member_types ) ); ?>/>
+							<?php _e( 'Users with no member type', 'bp-xprofile-field-for-member-types' ); ?>
+						</label>
+					</li>
+
 				</ul>
 			</div>
 
